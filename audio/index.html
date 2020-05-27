@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- <meta name="apple-mobile-web-app-capable" content="yes"> -->
+    <title>Hello audio</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-extras@3.3.0/dist/aframe-extras.min.js"></script>
+    <script src="scripts/twoway-motion.js"></script>
+  </head>
+  <body>
+    <div>
+    <a-scene>
+      <!-- <a-entity raycaster="objects: .clickable" cursor="rayOrigin: mouse"></a-entity> -->
+      <a-assets>
+        <audio id="sound1" src="data/sound1.mp3"></audio>
+        <audio id="sound2" src="data/sound2.mp3"></audio>
+      </a-assets>
+      <a-entity id="rig"  movement-controls position="0 1.6 0">
+        <a-entity id="camera" twoway-motion="nonMobileLoad: false; speed: 200; threshold: -30" camera position="0 0 0" look-controls wasd-controls="acceleration:200">
+          <a-entity cursor="rayOrigin: mouse"></a-entity>
+        </a-entity>
+      </a-entity>
+      <a-plane color="yellow" height="20" width="20" rotation="-90 0 0" position="0 0 -10"></a-plane>
+      <a-sphere color="tomato" position = "2 1.6 -1" class="clickable" sound="src: #sound1; on:click"></a-sphere>
+      <a-sphere color="pink" position = "-5 1.6 -10" class="clickable" sound="src: #sound2; on:click"></a-sphere>
+    </a-scene>
+  </div>
+  <div>Use WASD (or tap your screen on mobile) to move through the scene, tap the objects to trigger audio.</div>
+  </body>
+</html>
